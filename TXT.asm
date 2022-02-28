@@ -4,7 +4,7 @@
 .code   
  org 100h
  Start:
-   	posX      db 1 dup(0)        ; dh = posY -> controls row
+    posX      db 1 dup(0)        ; dh = posY -> controls row
     posY      db 1 dup(0)        ; dl = posX -> controls column
     Lfind     dw 1 dup(0)        ; Once was db
     matrix    db 30000 dup(0)    ;(40*750)30000 chars + 1 end of file byte .
@@ -13,7 +13,7 @@
     curr_char dw ?
     Index dw ?
     fsize dw ?
-	fcont db 30000 dup(0)       
+    fcont db 30000 dup(0)       
     inname db 100 dup (?)       ;argv[1] pop ax, pop bx, pop cx = argv[1]
     inh dw ? 
 
@@ -47,8 +47,8 @@
     mov ah, 42h                    ;Seeks End of File
     mov al, 2
     mov bx, inh
-	mov cx, 0
-	mov dx, 0
+    mov cx, 0
+    mov dx, 0
     int 21h
     jc error
     mov fsize, ax                  ;Size of File
@@ -100,7 +100,7 @@
     jmp Program
     
   Error:
-	mov ah,4ch
+    mov ah,4ch
     int 21h     
   
   ReadError:
@@ -562,8 +562,8 @@ Main:
  SetCursor:                 ;Sets Cursor
     mov ah, 2h
     mov bh, 0
-	int 10h    
-	ret
+    int 10h    
+    ret
      
  ClearScreen:
     mov ax, 0003h
@@ -594,14 +594,14 @@ Main:
     jmp Done
 	
  Done:                          ;Closes File.
-	mov bx, inh
-	mov ah, 3Eh
-	int 21h
-	jc errorint2
+    mov bx, inh
+    mov ah, 3Eh
+    int 21h
+    jc errorint2
 	
-	mov ax,0003h                ;Clears Screen and Exits.
+    mov ax,0003h                ;Clears Screen and Exits.
     int 10h
-	mov ah,4ch
+    mov ah,4ch
     int 21h 
     
   errorint2:
@@ -1012,15 +1012,15 @@ Main2:
     jmp Done
 	
   Done2:                          ;Closes File.
-	mov bx, inh
-	mov ah, 3Eh
-	int 21h
-	jc errorint3
+     mov bx, inh
+     mov ah, 3Eh
+     int 21h
+     jc errorint3
 	
-	mov ax,0003h                    ;Clears Screen and Exits.
-    int 10h
-	mov ah,4ch
-    int 21h 
+     mov ax,0003h                    ;Clears Screen and Exits.
+     int 10h
+     mov ah,4ch
+     int 21h 
     
    errorint3:
     jmp error
